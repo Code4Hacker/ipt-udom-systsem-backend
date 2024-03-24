@@ -4,7 +4,8 @@ include_once ("connector.php");
 switch($_SERVER['REQUEST_METHOD']){
     case "POST":
         $std_id = $_POST['studentId'];
-        $sql = "SELECT * FROM LOGBOOK WHERE task_for = '$std_id' ORDER BY lId DESC";
+        $week = $_POST['week'];
+        $sql = "SELECT * FROM LOGBOOK WHERE task_for = '$std_id' AND week_no LIKE '$week' ORDER BY lId DESC";
 
         $receives = $conn -> query($sql);
 
