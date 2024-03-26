@@ -17,7 +17,7 @@ switch($_SERVER['REQUEST_METHOD']){
             $sql_check = "SELECT * FROM STUDENTS WHERE t_number = '$id' AND password = '$old_password'";
             $returned = $conn -> query($sql_check);
 
-            if($returned){
+            if($returned -> num_rows > 0){
                 $update_sql = "UPDATE STUDENTS SET password='$new_pwd' WHERE t_number = '$id' AND password = '$old_password'";
 
                 $response_back = $conn -> query($update_sql);
@@ -27,10 +27,10 @@ switch($_SERVER['REQUEST_METHOD']){
                     echo json_encode(array("status" => 500, "message" => "Error.".$conn -> error));
                 }
             }else{
-                echo json_encode(array("status" => 500, "message" => "Error.".$conn -> error));
+                echo  json_encode(array("status" => 403, "message" => "Old Password is Invalid"));
             }
         }else{
-            echo json_encode(array("status" => 402, "message" => "Error.".$conn -> error));
+            echo json_encode(array("status" => 402, "message" => "Old Password Field is Empty."));
         }
         break;
     default:
