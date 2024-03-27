@@ -25,3 +25,4 @@ switch ($_SERVER['REQUEST_METHOD']) {
     default:
         break;
 }
+?>

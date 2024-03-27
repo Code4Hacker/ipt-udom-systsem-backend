@@ -57,7 +57,8 @@ CREATE TABLE
         super_id VARCHAR(15) UNIQUE,
         mobile VARCHAR(14),
         e_mail VARCHAR(255),
-        password VARCHAR(50) DEFAULT l_name
+        password VARCHAR(50) DEFAULT l_name,
+        location VARCHAR(255)
     );
 
 CREATE TABLE
